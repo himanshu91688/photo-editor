@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online image compressor tool. Reduce image file size while maintaining quality. Supports JPG, PNG, WEBP formats.">
+    <meta name="keywords" content="image compressor, photo optimizer, reduce image size, online image tool, JPG compressor, PNG optimizer">
+    <title>PhotoCompress - Free Online Image Compression Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Photo<span>Compress</span></h1>
+            <p>Free online tool to compress your images without losing quality</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="upload-section">
+            <div class="upload-box" id="dropArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h2>Drag & Drop Your Images Here</h2>
+                <p>or</p>
+                <button id="selectFiles" class="btn">Select Files</button>
+                <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                <p class="formats">Supports: JPG, PNG, WEBP</p>
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <div class="control-group">
+                <label for="compressionLevel">Compression Level:</label>
+                <div class="slider-container">
+                    <input type="range" id="compressionLevel" min="0" max="100" value="70">
+                    <div class="slider-labels">
+                        <span>Low</span>
+                        <span>Medium</span>
+                        <span>High</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="outputFormat">Output Format:</label>
+                <select id="outputFormat">
+                    <option value="original">Original Format</option>
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WEBP</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="resizeToggle">Resize Image:</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="resizeToggle">
+                    <span class="slider"></span>
+                </div>
+                <div class="resize-options" id="resizeOptions" style="display: none;">
+                    <div class="resize-input">
+                        <input type="number" id="resizeWidth" placeholder="Width (px)">
+                        <span>x</span>
+                        <input type="number" id="resizeHeight" placeholder="Height (px)">
+                    </div>
+                    <div class="resize-checkbox">
+                        <input type="checkbox" id="maintainRatio" checked>
+                        <label for="maintainRatio">Maintain Aspect Ratio</label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="compressBtn" class="btn primary" disabled>Compress Images</button>
+        </section>
+
+        <!-- AdSense Banner Ad -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PhotoCompress Top Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>Compression Results</h2>
+            <div class="summary-card">
+                <div class="summary-item">
+                    <span class="summary-value" id="originalSize">0 KB</span>
+                    <span class="summary-label">Original Size</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-value" id="compressedSize">0 KB</span>
+                    <span class="summary-label">Compressed Size</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-value" id="savings">0%</span>
+                    <span class="summary-label">Savings</span>
+                </div>
+            </div>
+
+            <div class="image-grid" id="imageGrid">
+                <!-- Images will be added here dynamically -->
+            </div>
+
+            <div class="actions">
+                <button id="downloadAll" class="btn primary">
+                    <i class="fas fa-download"></i> Download All
+                </button>
+                <button id="compressMore" class="btn secondary">
+                    <i class="fas fa-redo"></i> Compress More
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- AdSense Bottom Banner -->
+    <div class="ad-container wide">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- PhotoCompress Bottom Banner -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PhotoCompress</h3>
+                    <p>Free online tool to compress your images without losing quality. Optimize your photos for web and mobile.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PhotoCompress. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
